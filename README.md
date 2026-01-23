@@ -11,7 +11,7 @@ an argument with `--key`)
 
 Example of execution:
 ```
-user@laptop:~/repos/openconfigports$ ./gen_openconfig.py -s scs-c2-eqiad
+user@laptop:~/openconfigports$ ./gen_openconfig.py -s scs-c2-eqiad
 Netbox API token: 
 Wrote config to scs-c2-eqiad.conf
 ```
@@ -21,7 +21,7 @@ Wrote config to scs-c2-eqiad.conf
 The resulting configuration is written to a local file in the directory the script was run from,
 for instance:
 ```
-cmooney@wikilap:~/repos/openconfigports$ head -20 scs-c2-eqiad.conf 
+user@laptop:~/openconfigports$ head -20 scs-c2-eqiad.conf 
 # Serial port configuration for scs-c2-eqiad
 
 config -s config.ports.port1=
