@@ -39,15 +39,12 @@ def main():
 def get_graphql_query(query: str, variables: dict = None, agent: str = "test script") -> dict:
     """Sends graphql query to netbox and returns JSON result as dict"""
     url = f"https://{args.netbox}/graphql/"
-
     nb_key = args.key if args.key else getpass(prompt="Netbox API token: ")
-
     headers = {
         'Authorization': f'Token {nb_key}',
         'User-Agent': agent,
         'Content-Type': "application/json"
     }
-
     data = {"query": query}
     if variables is not None:
         data['variables'] = variables
