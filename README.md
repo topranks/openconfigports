@@ -6,7 +6,7 @@ Simple script to generate OpenConfig CLI commands to configure serial ports base
 The command takes one main argument, the name of the serial console server in Netbox to generate
 the configuration for.  This is passed with `--scs` or `-s`.
 
-A valid Netbox API key is also required, which the user will be prompted for (or they can pass as
+A valid read-only Netbox API key is also required, which the user will be prompted for (or they can pass as
 an argument with `--key`) 
 
 Example of execution:
