@@ -1,7 +1,11 @@
 # OpenConfig Serial Port Config Generator
 Simple script to generate OpenConfig CLI commands to configure serial ports based on Netbox
 
-## Usage
+### Dependencies
+
+Requires `python3-jinja2` package to be installed
+
+### Usage
 
 The command takes one main argument, the name of the serial console server in Netbox to generate
 the configuration for.  This is passed with `--scs` or `-s`.
@@ -16,7 +20,7 @@ Netbox API token:
 Wrote config to scs-c2-eqiad.conf
 ```
 
-## Output
+### Output
 
 The resulting configuration is written to a local file in the directory the script was run from,
 for instance:
