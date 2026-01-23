@@ -1,0 +1,27 @@
+{# Template to generate commands to set serial ports config on OpenGear device -#}
+# Serial port configuration for {{ scs }}
+
+{% for port in ports -%}
+config -s config.ports.{{port.name}}=
+{% if port.connected_endpoints -%}
+{% set remote_device = port.connected_endpoints[0].device.name -%}
+{% set remote_vendor = port.connected_endpoints[0].device.device_type.manufacturer.slug -%}
+{% set serial_speed = 115200 if remote_vendor=="nokia" else 9600 -%}
+config -s config.ports.{{port.name}}.charsize=8
+config -s config.ports.{{port.name}}.dtrmode=alwayson
+config -s config.ports.{{port.name}}.flowcontrol=None
+config -s config.ports.{{port.name}}.label={{remote_device}}
+config -s config.ports.{{port.name}}.loglevel=0
+config -s config.ports.{{port.name}}.mode=portmanager
+config -s config.ports.{{port.name}}.parity=None
+config -s config.ports.{{port.name}}.pinout=X2
+config -s config.ports.{{port.name}}.protocol=RS232
+config -s config.ports.{{port.name}}.speed={{serial_speed}}
+config -s config.ports.{{port.name}}.stop=1
+config -s config.ports.{{port.name}}.syslog.facility=Default
+config -s config.ports.{{port.name}}.syslog.priority=Default
+config -s config.ports.{{port.name}}.terminal=vt220
+{% endif %}
+{% endfor %}
+# Run "config -a" to apply the new configuration after pasting it
+

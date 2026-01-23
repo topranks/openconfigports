@@ -1,0 +1,27 @@
+query ($device: String) {
+  device_list(
+    filters: {
+      role: "scs"
+      name: { exact: $device }
+      status: "active"
+    }
+  ) {
+        name
+        consoleserverports {
+          name
+          connected_endpoints {
+            __typename
+            ...on ConsolePortType{
+              name
+              device {
+                name
+                device_type {
+                  slug
+                  manufacturer { slug }
+                }
+              }
+            }
+          }
+        }
+    }
+  }
