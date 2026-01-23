@@ -30,6 +30,7 @@ def main():
     env = Environment(loader=file_loader)
     template = env.get_template('opengear_ports.j2')
     output = template.render(ports = nb_data['device_list'][0]['consoleserverports'], scs = args.scs)
+    
     filename = f"{args.scs}.conf"
     with open(filename, 'w') as f:
         f.write(output)
